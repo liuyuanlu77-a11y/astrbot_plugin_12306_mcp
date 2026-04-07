@@ -1,0 +1,90 @@
+{
+    "mcp_connection": {
+        "description": "MCP 连接配置（12306 官方查询）",
+        "type": "object",
+        "items": {
+            "type": {
+                "description": "连接类型",
+                "type": "string",
+                "options": ["streamable_http", "sse", "stdio"],
+                "default": "streamable_http"
+            },
+            "sse_url": {
+                "description": "HTTP 端点地址",
+                "type": "string",
+                "default": "http://localhost:8000/mcp",
+                "hint": "对于 Streamable HTTP，请使用 /mcp 路径；对于 SSE，请使用 /sse"
+            },
+            "stdio_command": {
+                "description": "stdio 模式命令",
+                "type": "string",
+                "default": "python",
+                "invisible": true
+            },
+            "stdio_args": {
+                "description": "stdio 模式参数",
+                "type": "list",
+                "default": ["-m", "mcp_server_12306"],
+                "invisible": true
+            },
+            "timeout": {
+                "description": "查询超时（秒）",
+                "type": "int",
+                "default": 30,
+                "min": 5,
+                "max": 120
+            },
+            "auto_reconnect": {
+                "description": "自动重连 MCP 服务器",
+                "type": "bool",
+                "default": true
+            },
+            "excluded_tools": {
+                "description": "禁止注册到 LLM 的工具名称（如 [\"ping\"]）",
+                "type": "list",
+                "default": []
+            }
+        }
+    },
+    "llm_integration": {
+        "description": "大模型集成设置",
+        "type": "object",
+        "items": {
+            "auto_register_tools": {
+                "description": "自动将工具注册为 LLM Tool（大模型自动识别调用）",
+                "type": "bool",
+                "default": true
+            },
+            "enable_manual_commands": {
+                "description": "启用手动命令（/12306_xxx）",
+                "type": "bool",
+                "default": true
+            }
+        }
+    },
+    "nathan_api": {
+        "description": "NathanAPI 车站大屏接口配置",
+        "type": "object",
+        "items": {
+            "api_key": {
+                "description": "NathanAPI 平台 API Key",
+                "type": "string",
+                "default": "",
+                "hint": "从 https://api.nanyinet.com 注册获取"
+            },
+            "timeout": {
+                "description": "请求超时时间（秒）",
+                "type": "int",
+                "default": 15,
+                "min": 5,
+                "max": 30
+            }
+        }
+    },
+    "tavily_api_key": {
+        "description": "Tavily 搜索 API Key（用于列车详情新闻整合）",
+        "type": "string",
+        "default": "",
+        "hint": "可选，不配置则无法获取新闻"
+    }
+}

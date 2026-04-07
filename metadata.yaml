@@ -1,6 +1,8 @@
-name: helloworld # 插件唯一识别名，以 astrbot_plugin_ 前缀开头
-display_name: helloworld # 用于展示的名字，可以是方便人类阅读的名字（需要版本 >= v4.5.0，低版本不会报错，请放心填写）
-desc: AstrBot 插件示例。 # 插件简短描述
-version: v1.3.0 # 插件版本号。格式：v1.1.1 或者 v1.1
-author: Soulter # 作者
-repo: https://github.com/Soulter/helloworld # 插件的仓库地址
+name: astrobot_plugin_12306_mcp
+display_name: 🚄 12306 MCP 查询助手（含车站大屏）
+author: rong-dai
+version: 1.0.0
+description: 对接 12306 MCP 服务器（支持 Docker 部署）+ NathanAPI 车站大屏，提供余票、车次、票价、时刻表、中转换乘、实时车站大屏等全部功能，支持大模型自动调用。
+repo: https://github.com/liuyuanlu77-a11y/astrbot_plugin_12306_mcp
+support_platforms: []
+astrbot_version: ">=4.17.0"
